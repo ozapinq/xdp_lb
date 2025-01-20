@@ -42,7 +42,7 @@ sudo ip link set dev eth1 xdp obj xdp_loadbalancer.o sec xdp
 
 3. Configure target interfaces for load balancing (e.g., eth2 and eth3):
 ```bash
-sudo ./xdp_config /sys/fs/bpf/redirect_map eth2 eth3
+sudo ./xdp_config /sys/fs/bpf/xdp/globals/redirect_map eth2 eth3
 ```
 
 4. Verify the program is loaded:
@@ -65,7 +65,7 @@ sudo cat /sys/kernel/debug/tracing/trace_pipe
 
 - Check map contents:
 ```bash
-sudo bpftool map dump pinned /sys/fs/bpf/redirect_map
+sudo bpftool map dump pinned /sys/fs/bpf/xdp/globals/redirect_map
 ```
 
 - Remove the XDP program:
